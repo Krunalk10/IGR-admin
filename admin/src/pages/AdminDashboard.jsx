@@ -3,14 +3,30 @@ import Sidebar from '../modules/components/Sidebar'
 import RoleManagement from '../modules/role/RoleManagement'
 
 const menuItems = [
-  'Role Management',
-  'Office Management',
-  'Employee Management',
-  'Zone Management'
-]
+  "Role Management",
+  "Office Management",
+  "Employee Management",
+  "Zone Management",
+];
 
 function AdminDashboard({ user, onLogout }) {
-  const [activeSection, setActiveSection] = useState(menuItems[0])
+  const [activePage, setActivePage] = useState(menuItems[0]);
+
+  const renderContent = () => {
+    if (activePage === "Role Management") {
+      return <RoleManagement createdBy={user.name} />;
+    }
+
+    return (
+      <div className="placeholder-panel">
+        <h3>{activePage}</h3>
+        <p>
+          This section is not implemented yet. Click Role Management to work
+          with roles.
+        </p>
+      </div>
+    );
+  };
 
   return (
     <div className="dashboard-shell">
@@ -19,11 +35,13 @@ function AdminDashboard({ user, onLogout }) {
           <div className="brand-title">Admin Portal</div>
           <div className="brand-subtitle">{user.role}</div>
         </div>
+
         <Sidebar
           items={menuItems}
-          activeItem={activeSection}
-          onSelect={setActiveSection}
+          activeItem={activePage}
+          onSelect={setActivePage}
         />
+
         <button type="button" className="logout-button" onClick={onLogout}>
           Logout
         </button>
@@ -39,34 +57,10 @@ function AdminDashboard({ user, onLogout }) {
           <div className="status-pill">{user.role}</div>
         </div>
 
-        <div className="dashboard-grid">
-          {menuItems.map((item) => (
-            <div
-              key={item}
-              className={`dashboard-card ${item === activeSection ? 'active-card' : ''}`}
-              onClick={() => setActiveSection(item)}
-            >
-              {item}
-            </div>
-          ))}
-        </div>
-
-        <section className="dashboard-content">
-          {activeSection === 'Role Management' ? (
-            <RoleManagement createdBy={user.name} />
-          ) : (
-            <div className="placeholder-panel">
-              <h3>{activeSection}</h3>
-              <p>
-                This section will show the {activeSection.toLowerCase()} fields and details.
-                For now, role management is implemented in this admin UI.
-              </p>
-            </div>
-          )}
-        </section>
+        <section className="dashboard-content">{renderContent()}</section>
       </main>
     </div>
-  )
+  );
 }
 
 export default AdminDashboard;
