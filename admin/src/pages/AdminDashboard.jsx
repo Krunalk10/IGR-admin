@@ -20,10 +20,7 @@ function AdminDashboard({ user, onLogout }) {
     return (
       <div className="placeholder-panel">
         <h3>{activePage}</h3>
-        <p>
-          This section is not implemented yet. Click Role Management to work
-          with roles.
-        </p>
+      
       </div>
     );
   };

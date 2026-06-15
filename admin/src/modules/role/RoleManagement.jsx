@@ -89,16 +89,7 @@ function RoleManagement({ createdBy }) {
 
   return (
     <div className="role-management-shell ai-style-change-4">
-      {/* <aside className="role-menu-panel">
-        <div className="role-menu-title">Management</div>
-        <nav className="role-menu-list">
-          {menuItems.map((item) => (
-            <button key={item} type="button" className="role-menu-item">
-              {item}
-            </button>
-          ))}
-        </nav>
-      </aside> */}
+  
 
       <section className="role-content-panel ai-style-change-1">
         <div className="role-top-bar">

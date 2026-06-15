@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import LoginPage from './pages/LoginPage'
-import AdminDashboard from './pages/AdminDashboard'
+import AppRoutes from './routes/AppRoutes'
 
 const initialAdmins = [
   {
@@ -45,11 +44,13 @@ function App() {
 
   return (
     <div className="app-root">
-      {user ? (
-        <AdminDashboard user={user} onLogout={handleLogout} />
-      ) : (
-        <LoginPage onLogin={handleLogin} onCreateAdmin={handleCreateAdmin} />
-      )}
+      <AppRoutes
+        user={user}
+        admins={admins}
+        onLogin={handleLogin}
+        onCreateAdmin={handleCreateAdmin}
+        onLogout={handleLogout}
+      />
     </div>
   )
 }

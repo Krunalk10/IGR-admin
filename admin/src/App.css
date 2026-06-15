@@ -239,7 +239,7 @@ small {
 
 .role-management-shell {
   display: grid;
-  grid-template-columns: 260px minmax(0, 1fr);
+  grid-template-columns: 1fr;
   gap: 24px;
 }
 
@@ -283,7 +283,7 @@ small {
 /* Ensure the right content panel can take full available width
    while still allowing the inner table to scroll when needed. */
 .role-content-panel.ai-style-change-1 {
-  width: 100%;
+  width: 325%;
   min-width: 0; /* allow flex child to shrink correctly inside grid */
 }
 
